@@ -52,9 +52,9 @@ def runmodel(input_date):
     folium.GeoJson(geojson,style_function=lambda x: {'color': x['properties']['stroke'],'weight': x['properties']['stroke-width'],'fillColor': x['properties']['fill'],'opacity': 1.0}).add_to(geomap)
     geomap.add_child(cm)
     plugins.Fullscreen(position='topright', force_separate_button=True).add_to(geomap)
-    geomap.save(f'flaskapp/static/activity_map.html')
-    time.sleep(1)
-    return
+    fname = 'static/'+str(dt.datetime.now())+'.html'
+    geomap.save(f'flaskapp/'+fname)
+    return fname
 
 def get_weather(input_date):
     date = (pd.to_datetime(input_date)).date()

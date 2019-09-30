@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from flaskapp import app
-from flask import request
+from flask import request, url_for
 from demo import runmodel
 import matplotlib
 matplotlib.use('Agg')
@@ -26,15 +26,16 @@ def index():
         deltatime = (date - date.today()).total_seconds()
         if (deltatime >= 604800.0):
             return redirect("/error")
-        runmodel(date)
-        return redirect("/output")
+        fname = runmodel(date)
+        return redirect(url_for('output', file = fname))
     return render_template("index.html", title = 'Mosquito Know')
 
 @app.route('/output',methods=['GET','POST'])
 def output():
+    file=request.args.get('file')
     if request.method == 'POST':
         return redirect("/index")
-    return render_template("output.html",title = 'Mosquito Know')
+    return render_template("output.html",title = 'Mosquito Know', file = file)
 
 @app.route('/error',methods=['GET','POST'])
 def error():
