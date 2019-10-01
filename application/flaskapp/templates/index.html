@@ -1,15 +1,13 @@
-<html>
-    <head>
-        <title>{{title}} - Mosquito Forecast</title>
-    </head>
-    <body bgcolor="999999">
-        <div style="text-align:center;">
-        <h1>{{title}}!</h1>
-        <h2>Predicting mosquito activity in Chicago</h2>
-        <form action='' method='POST'>
-            <input type="date" name="date1" align="center" style="font-size: 2rem" value="2019-09-30"><br><br>
-            <input type='submit' value="Forecast!" align="center" style="font-size: 2rem">
-        </form>
-        </div>
-    </body>
-</html>
+{% extends 'hometemplate.html'%}
+{% block title %}{{title}} - Mosquito Forecast{% endblock %}
+    {% block content %}
+    <div style="text-align:center;">
+    <h1>{{title}}!</h1>
+    <h2>Predicting mosquito activity in Chicago</h2>
+    <form action='' method='POST'>
+        <input type="date" name="date1" align="center" style="font-size: 2rem" value="2019-09-30"><br><br>
+        <input type='submit' value="Forecast!" align="center" style="font-size: 2rem">
+    </form>
+<a href="https://darksky.net/poweredby/"><img src="../static/darksky.png" width="200" title="Dark Sky" alt="Dark Sky"></a>
+    </div>
+{% endblock %}

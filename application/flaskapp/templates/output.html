@@ -1,25 +1,6 @@
-<html>
-<style>
-.center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-</style>
-    <head>
-        <title>{{title}} - Your Mosquito Forecast</title>
-    </head>
-    <body bgcolor="999999">
-        <div class="center">
-            <iframe src="{{file}}" height="800" width="1000"></iframe><br>
-            <div style="text-align:center;">
-                <form action='' method='POST'>
-                    <input type='submit' value="Back" style="font-size: 2rem">
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
+{% extends 'hometemplate.html' %}
+{% block title %}{{title}} - Your Mosquito Forecast{% endblock %}
+{% block content %}
+<iframe src="{{file}}" height="800" width="1000"></iframe><br>
+<a href="https://darksky.net/poweredby/"><img src="../static/darksky.png" width="200" title="Dark Sky" alt="Dark Sky"></a>
+{% endblock %}
