@@ -24,7 +24,6 @@ from shapely.geometry import Point, Polygon
 
 def runmodel(input_date):
     date = (pd.to_datetime(input_date)).date()
-    print(date)
     modelfilename = 'data/lin_model.sav'
     scalerfilename = 'data/lin_scaler.sav'
     lin = pickle.load(open(modelfilename, 'rb'))
@@ -58,7 +57,6 @@ def runmodel(input_date):
 
 def get_weather(input_date):
     date = (pd.to_datetime(input_date)).date()
-    print(date)
     dskey = '6864d54f724e54e7c3ae08094f523ff0'
     CHICAGO = dskey, 41.95, -87.80
     deltaT = (date - dt.date.today()).days
@@ -105,7 +103,6 @@ def get_weather(input_date):
 
 def build_input(input_date):
     date = (pd.to_datetime(input_date)).date()
-    print(date)
     A = get_weather(date)
     GD = pd.read_csv('data/gridlake.csv')
     GD['sqrt_dw']=np.sqrt(GD['d_water'])

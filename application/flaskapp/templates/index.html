@@ -1,11 +1,12 @@
-{% extends 'hometemplate.html'%}
+{% extends 'hometemplate.html' %}
 {% block title %}{{title}} - Mosquito Forecast{% endblock %}
     {% block content %}
     <div style="text-align:center;">
     <h1>{{title}}!</h1>
     <h2>Predicting mosquito activity in Chicago</h2>
     <form action='' method='POST'>
-        <input type="date" name="date1" align="center" style="font-size: 2rem" value="2019-09-30"><br><br>
+        <input type="date" name="date1" align="center" style="font-size: 2rem" value="{{today}}" min="2007-06-07" max="{{oneweek}}">
+        <br><br>
         <input type='submit' value="Forecast!" align="center" style="font-size: 2rem">
     </form>
 <a href="https://darksky.net/poweredby/"><img src="../static/darksky.png" width="200" title="Dark Sky" alt="Dark Sky"></a>
