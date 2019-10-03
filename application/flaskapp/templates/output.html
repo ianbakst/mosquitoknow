@@ -1,6 +1,7 @@
 {% extends 'hometemplate.html' %}
 {% block title %}{{title}} - Your Mosquito Forecast{% endblock %}
 {% block content %}
+<img src="../static/scale.png" width="300" title="Scale" alt="Mosquito Activity Scale">
 <iframe src="{{file}}" height="800" width="1000"></iframe><br>
 <a href="https://darksky.net/poweredby/"><img src="../static/darksky.png" width="200" title="Dark Sky" alt="Dark Sky"></a>
 {% endblock %}

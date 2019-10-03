@@ -45,11 +45,9 @@ def runmodel(input_date):
     vmax = 50
     levels = len(colors)
     cfig = plt.contourf(xx, yy, TT, levels, alpha=1.0, colors=colors, linestyles='None', vmin=vmin, vmax=vmax)
-    cm = branca.colormap.LinearColormap(colors, vmin=vmin, vmax=vmax,caption='Mosquito Activity Intensity').to_step(levels)    
     geojson = geojsoncontour.contourf_to_geojson(contourf=cfig, min_angle_deg=0.0, ndigits=5, stroke_width=0.5, fill_opacity=1.0)
     geomap = folium.Map(location=[41.89, -87.64], zoom_start=13, tiles="stamenterrain")
-    folium.GeoJson(geojson,style_function=lambda x: {'color': x['properties']['stroke'],'weight': x['properties']['stroke-width'],'fillColor': x['properties']['fill'],'opacity': 1.0}).add_to(geomap)
-    geomap.add_child(cm)
+    folium.GeoJson(geojson,style_function=lambda x: {'color': x['properties']['stroke'],'weight': x['properties']['stroke-width'],'fillColor': x['properties']['fill'],'fillOpacity': 0.65}).add_to(geomap)
     plugins.Fullscreen(position='topright', force_separate_button=True).add_to(geomap)
     fname = 'static/'+str(dt.datetime.now())+'.html'
     geomap.save(f'flaskapp/'+fname)
