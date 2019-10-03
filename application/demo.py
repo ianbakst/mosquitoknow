@@ -11,6 +11,7 @@ from folium import plugins
 import geopandas as gpd
 import matplotlib.pyplot as plt
 from scipy.interpolate import griddata
+from scipy import ndimage
 import seaborn as sns
 import geojsoncontour
 from sklearn.linear_model import LinearRegression
@@ -36,9 +37,14 @@ def runmodel(input_date):
     for i in range(l):
         if Y[i] < 0:
             Y[i] = 0
-    TT = Y.reshape(51,51).transpose()
-    xx = np.linspace(min(testX['lon']),max(testX['lon']),51)
-    yy = np.linspace(min(testX['lat']),max(testX['lat']),51)
+    smallY = Y.reshape(51,51).transpose()
+    y5 = ndimage.zoom(smallY, 5)
+    
+    NN = np.genfromtxt("data/nans.csv",delimiter = ',')
+    TT = np.multiply(y5,NN)
+    
+    xx = np.linspace(min(testX['lon']),max(testX['lon']),255)
+    yy = np.linspace(min(testX['lat']),max(testX['lat']),255)
 
     colors = ['darkgreen','green','yellow','orange','red','darkred']
     vmin = 0
