@@ -37,14 +37,13 @@ def runmodel(input_date):
     for i in range(l):
         if Y[i] < 0:
             Y[i] = 0
-    smallY = Y.reshape(51,51).transpose()
-    y5 = ndimage.zoom(smallY, 5)
+    smallY = Y.reshape(101,101)
+#    y5 = ndimage.zoom(smallY, 5)
     
-    NN = np.genfromtxt("data/nans.csv",delimiter = ',')
-    TT = np.multiply(y5,NN)
-    
-    xx = np.linspace(min(testX['lon']),max(testX['lon']),255)
-    yy = np.linspace(min(testX['lat']),max(testX['lat']),255)
+    NN = np.genfromtxt("data/nans100.csv",delimiter = ',').transpose()
+    TT = np.multiply(smallY,NN)
+    xx = np.linspace(min(testX['lon']),max(testX['lon']),101)
+    yy = np.linspace(min(testX['lat']),max(testX['lat']),101)
 
     colors = ['darkgreen','green','yellow','orange','red','darkred']
     vmin = 0
@@ -108,7 +107,7 @@ def get_weather(input_date):
 def build_input(input_date):
     date = (pd.to_datetime(input_date)).date()
     A = get_weather(date)
-    GD = pd.read_csv('data/gridlake.csv')
+    GD = pd.read_csv('data/grid100.csv')
     GD['sqrt_dw']=np.sqrt(GD['d_water'])
     GD['sqrt_dp']=np.sqrt(GD['d_park'])
     GD['TH0'] = A['TH0']
