@@ -9,4 +9,4 @@ The data available includes:
  * Weather data from one life cycle leading up to a trap observation, including temperatures and precipitation.
 
 The data 
-![](plots/dist_lake_eda.png | width=100)
+![](plots/dist_lake_eda.png){:width="50%"}
