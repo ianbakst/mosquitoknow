@@ -8,5 +8,13 @@ The data available includes:
  * Geospatial data including the locations of waterways and parks
  * Weather data from one life cycle leading up to a trap observation, including temperatures and precipitation.
 
-The data 
-![](plots/dist_lake_eda.png)![](plots/dist_water_eda.png)
+In looking at the data, there are nontrivial relationships between the number of mosquitoes observed, and certain weather and geospatial features.
+Here, Lake Michigan is separated from other bodies of water since it has its own effect on the local climate.
+
+![](plots/dist_lake_eda.png)
+![](plots/dist_water_eda.png)
+![](plots/max_temp_eda.png)
+
+A linear regression model was implemented.
+While many features proved important, it was found that certain features weren’t, such as amount of precipitation.
+![](plots/feature_importance.png)
