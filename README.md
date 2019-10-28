@@ -7,3 +7,5 @@ The data available includes:
  * Counts of mosquito traps set around the city
  * Geospatial data including the locations of waterways and parks
  * Weather data from one life cycle leading up to a trap observation, including temperatures and precipitation.
+
+The data 
